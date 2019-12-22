@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 import classNames from 'classnames'
 
 const NavigationNew = function () {
@@ -15,7 +16,7 @@ const NavigationNew = function () {
         clickedBtnNew ?
           (
             <div className="dashboard__options">
-              <a className="dashboard__options-link" href="#">Dispositivo y Componentes</a>
+              <Link to="/bybiot/dashboard/add" className="dashboard__options-link">Dispositivo y Componentes</Link>
               <a className="dashboard__options-link" href="#">Evento</a>
               <a className="dashboard__options-link" href="#">Proyecto</a>
             </div>

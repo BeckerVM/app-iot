@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom'
 
 //COMPONENTES
 import NavigationNew from '../components/navigation/NavigationNew'
@@ -15,7 +15,7 @@ const DashboardPage = function() {
     <div className="dashboard">
       <div className="dashboard__container">
         <header className="dashboard__header">
-          <h1 className="dashboard__title">ByB<span>IOT</span></h1>
+          <Link to="/bybiot/dashboard" className="dashboard__title">ByB<span>IOT</span></Link>
           <i className="fas fa-power-off text-white"></i>
         </header>
         <div className="dashboard__content">
@@ -29,12 +29,10 @@ const DashboardPage = function() {
           </aside>
           <main className="dashboard__main">
             <div className="dashboard__main-content">
-              <Router>
-                <Switch>
-                  <Route path="/bybiot/dashboard/test" component={TestPage} />
-                  <Route path="/bybiot/dashboard/add" component={AddPage} />
-                </Switch>
-              </Router>
+              <Switch>
+                <Route path="/bybiot/dashboard/test" component={TestPage} />
+                <Route path="/bybiot/dashboard/add" component={AddPage} />
+              </Switch>
             </div>
           </main>
         </div>

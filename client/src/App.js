@@ -11,8 +11,7 @@ function App() {
       <Switch>
         <Route exact path="/"  exact component={IndexPage} />
         <Route path="/bybiot/dashboard" component={DashboardPage} />
-      </Switch>
-      
+      </Switch>      
     </Router>
   );
 }
