@@ -88,4 +88,16 @@
       background-color: #272c30;
     }
   }
+
+  &__btn-api {
+    padding: 1rem;
+    border-radius: .3rem;
+    width: 20rem;
+    font-weight: bold;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background-color: #693a3f;
+    color: #fff;
+  }
 }

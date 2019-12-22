@@ -4,6 +4,7 @@ import classNames from 'classnames'
 const NavigationAdd = function () {
   const [clickedBtnSensor, setClickedBtnSensor] = useState(false)
   const [clickedBtnActuator, setClickedBtnActuator] = useState(false)
+  const [clickedBtnExtention, setClickedBtnExtention] = useState(false)
 
   return (
     <div className="navigation-add">
@@ -34,7 +35,7 @@ const NavigationAdd = function () {
             }
           </div>
         </div>
-        <div className="navigation-add__menu">
+        <div className="navigation-add__menu mb-sm">
           <div className="navigation-add__item">
             <button onClick={() => setClickedBtnActuator(!clickedBtnActuator)} className="navigation-add__btn">
               <span>Actuadores</span>
@@ -51,6 +52,27 @@ const NavigationAdd = function () {
                 ) : null
             }
           </div>
+          <div className="navigation-add__menu mb-sm">
+            <div className="navigation-add__item">
+              <button onClick={() => setClickedBtnExtention(!clickedBtnExtention)} className="navigation-add__btn">
+                <span>Extensiones</span>
+                <i className={classNames('fas', { 'fa-chevron-down': !clickedBtnExtention, 'fa-chevron-up': clickedBtnExtention })}></i>
+              </button>
+              {
+                clickedBtnExtention ?
+                  (
+                    <div className="navigation-add__submenu">
+                      <span>Convertidor analogico</span>
+                      <span>Puerto GPIO</span>
+                    </div>
+                  ) : null
+              }
+            </div>
+          </div>
+        </div>
+        <strong>BYBIOT API</strong>
+        <div className="navigation-add__menu text-center">
+          <button className="navigation-add__btn-api">No tenemos una :v</button>
         </div>
       </div>
     </div>

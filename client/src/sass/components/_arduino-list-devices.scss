@@ -1,0 +1,47 @@
+.arduino-list-devices {
+  padding:  1.5rem 5rem;
+
+  &__list {
+    color: #fff;
+
+    h4 {
+      font-size: 1.6rem;
+      font-weight: 300;
+      margin-bottom: 1.5rem;
+    }
+  }
+
+  &__list-content {
+    display: flex;
+    margin-bottom: 1.5rem;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    margin-right: 1.5rem;
+    text-align: center;
+    border: .1rem solid #30363c;
+    background-color: #fff;
+    border-radius: .5rem;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all .3s;
+
+    img {
+      width: 12.8rem;
+      height: 12.8rem;
+      margin-bottom: 1.5rem;
+    }
+
+    span {
+      font-size: 1.3rem;
+      color: crimson;
+      padding: .5rem;
+    }
+  }
+
+  &__item:hover {
+    opacity: .8;
+  }
+}

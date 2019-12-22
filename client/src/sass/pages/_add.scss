@@ -1,5 +1,7 @@
 .add {
   display: flex;
+  overflow-y: scroll;
+  height: 55rem;
 
   &__left {
     background-color: #30363c;

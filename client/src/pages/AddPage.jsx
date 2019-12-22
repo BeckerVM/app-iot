@@ -2,6 +2,7 @@ import React from 'react'
 
 //COMPONENTES
 import NavigationAdd from '../components/navigation/NavigationAdd'
+import ArduinoListDevices from '../components/arduino/ArduinoListDevices'
 
 const AddPage = function() {
   return (
@@ -10,7 +11,7 @@ const AddPage = function() {
         <NavigationAdd />
       </div>
       <div className="add__rigth">
-        RIGTH
+        <ArduinoListDevices />
       </div>
     </div>
   )
