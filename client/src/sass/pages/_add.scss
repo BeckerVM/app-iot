@@ -1,0 +1,12 @@
+.add {
+  display: flex;
+
+  &__left {
+    background-color: #30363c;
+    width: 25rem;
+  }
+
+  &__rigth {
+    flex: 1;
+  }
+}

@@ -1,0 +1,10 @@
+@import './base/base';
+@import './abstracts/utilities';
+
+//PAGINAS
+@import './pages/dashboard';
+@import './pages/add';
+
+//COMPONENTES
+@import './components/arduino-container-widgets';
+@import './components/navigation-add';
