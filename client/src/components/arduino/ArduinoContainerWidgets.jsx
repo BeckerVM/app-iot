@@ -18,7 +18,7 @@ const ArduinoContainerWidgets = function () {
                 <i className="fas fa-lightbulb text-green-1"></i> Verde
               </span>
               <span className="arduino-container-widgets__list-item">
-                <i class="fas fa-lightbulb text-yellow-1"></i> Amarillo
+                <i className="fas fa-lightbulb text-yellow-1"></i> Amarillo
               </span>
               <span className="arduino-container-widgets__list-item">
                 <i class="fas fa-lightbulb text-blue-1"></i> Azul

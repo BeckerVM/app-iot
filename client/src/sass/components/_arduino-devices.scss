@@ -1,0 +1,39 @@
+.arduino-devices {
+
+
+  &__device {
+    border-radius: .3rem;
+    cursor: pointer;
+    padding: 1rem; 
+    display: flex;
+    align-items: center;
+    border-bottom: .1rem solid #96809611;
+    justify-content: space-between;
+    color: #fff;
+    transition: all .3s;
+
+    img {
+      width: 9.6rem;
+      height: 9.6rem;
+      margin-right: 2rem;
+
+    }
+
+    font-size: 1.4rem;
+
+    i {
+      font-size: 1.8rem;
+    }
+  }
+
+
+  &__device:hover {
+    background-color: crimson;
+  }
+
+  &__device-left {
+    align-self: stretch;
+    display: flex;
+    align-items: center;
+  }
+}

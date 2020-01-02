@@ -3,6 +3,7 @@ import React from 'react'
 //COMPONENTES
 import NavigationAdd from '../components/navigation/NavigationAdd'
 import ArduinoListDevices from '../components/arduino/ArduinoListDevices'
+import ArduinoCategoryDevices from '../components/arduino/ArduinoCategoryDevices'
 
 const AddPage = function() {
   return (
@@ -11,7 +12,8 @@ const AddPage = function() {
         <NavigationAdd />
       </div>
       <div className="add__rigth">
-        <ArduinoListDevices />
+        { false && <ArduinoListDevices /> }
+        { true && <ArduinoCategoryDevices /> }
       </div>
     </div>
   )

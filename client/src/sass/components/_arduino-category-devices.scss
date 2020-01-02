@@ -1,0 +1,14 @@
+.arduino-category-devices {
+  display: flex;
+  height: 100%;
+
+  &__left {
+    width: 55%;
+    border-right: .1rem solid #353c42;
+    padding: 2rem 3rem 0 5rem;
+  }
+
+  &__right {
+    padding: 2rem;
+  }
+}

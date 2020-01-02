@@ -1,0 +1,93 @@
+.arduino-form-device {
+
+  &__title {
+    color: #fff;
+    font-size: 1.6rem;
+    font-weight: 300;
+    margin-bottom: 3rem;
+  }
+
+  &__device {
+    font-size: 1.6rem;
+    display: flex;
+    align-items: center;
+    margin-bottom: 4rem;
+
+    img {
+      margin-right: 3rem;
+    }
+    
+    div {
+      font-size: 1.3rem;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+    }
+
+    div strong {
+      margin-bottom: .5rem;
+      font-size: 1.5rem;
+    }
+  }
+
+  &__alert {
+    background-color: crimson;
+    color: #fff;
+    padding: .7rem;
+    border-radius: .3rem;
+    font-size: 1.3rem;
+    margin-bottom: 2rem;
+
+    p {
+      font-weight: bold;
+      margin-bottom: .3rem;
+    }
+  }
+
+  &__container-input {
+    position: relative;
+    margin-bottom: 1.5rem;
+
+    span {
+      position: absolute;
+      top: .3rem;
+      left: 1rem;
+    }
+
+    input {
+      width: 100%;
+      border: none;
+      border-radius: .5rem;
+      padding: 1.7rem 1rem 1rem;
+      outline: none;
+      border: .2rem solid transparent;
+    }
+
+    input:focus {
+      border: .2rem solid crimson;
+    }
+  }
+  
+  button {
+    cursor: pointer;
+    background-color: #693a3f;
+    padding: 1.5rem 1rem;
+    color: #fff;
+    font-size: 1.3rem;
+    width: 100%;
+    border: none;
+    border-radius: .3rem;
+    margin-top: 3rem;
+    font-weight: bold;
+    transition: all .3s;
+  }
+
+
+  button:hover {
+    background-color: #744146;
+  }
+
+  button:disabled {
+    background-color: #e68a941e;
+  }
+}

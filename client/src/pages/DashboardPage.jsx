@@ -15,7 +15,7 @@ const DashboardPage = function() {
     <div className="dashboard">
       <div className="dashboard__container">
         <header className="dashboard__header">
-          <Link to="/bybiot/dashboard" className="dashboard__title">ByB<span>IOT</span></Link>
+          <Link to="/bybiot/dashboard" className="dashboard__title">BYB<span>IOT</span></Link>
           <i className="fas fa-power-off text-white"></i>
         </header>
         <div className="dashboard__content">
