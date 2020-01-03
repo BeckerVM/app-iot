@@ -1,4 +1,6 @@
 import React from 'react'
+import store from './store'
+import { Provider } from 'react-redux'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
 //PAGINAS
@@ -7,12 +9,14 @@ import DashboardPage from './pages/DashboardPage'
 
 function App() {
   return (
-    <Router>
-      <Switch>
-        <Route exact path="/"  exact component={IndexPage} />
-        <Route path="/bybiot/dashboard" component={DashboardPage} />
-      </Switch>      
-    </Router>
+    <Provider store={store}>
+      <Router>
+        <Switch>
+          <Route exact path="/"  exact component={IndexPage} />
+          <Route path="/bybiot/dashboard" component={DashboardPage} />
+        </Switch>      
+      </Router>
+    </Provider>
   );
 }
 
