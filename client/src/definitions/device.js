@@ -1,0 +1,2 @@
+export const SET_DEVICES = 'SET_DEVICES'
+export const SET_NEW_DEVICE = 'SET_NEW_DEVICE'

@@ -8,12 +8,19 @@ import ArduinoListDevices from '../components/arduino/ArduinoListDevices'
 import ArduinoCategoryDevices from '../components/arduino/ArduinoCategoryDevices'
 
 //ACCIONES
-import { GET_CATEGORIES } from '../actions/category'
+import { GET_CATEGORIES, CLEAR_CATEGORIES } from '../actions/category'
+import { CLEAR_DEVICES } from '../actions/device'
 
 //COMPONENTE
-const AddPage = function({ GET_CATEGORIES }) {
+const AddPage = function({ GET_CATEGORIES, devices, CLEAR_DEVICES, CLEAR_CATEGORIES }) {
   useEffect(() => {
     GET_CATEGORIES()
+    
+    return () => {
+      console.log('SALIENDO DE ADD PAGE')
+      CLEAR_DEVICES()
+      CLEAR_CATEGORIES()
+    }
   }, [])
 
 
@@ -23,17 +30,24 @@ const AddPage = function({ GET_CATEGORIES }) {
         <NavigationAdd />
       </div>
       <div className="add__rigth">
-        { true && <ArduinoListDevices /> }
-        { false && <ArduinoCategoryDevices /> }
+        { devices.length === 0 && <ArduinoListDevices /> }
+        { devices.length > 0 && <ArduinoCategoryDevices /> }
       </div>
     </div>
   )
 }
 
 AddPage.propTypes = {
-  GET_CATEGORIES: PropTypes.func.isRequired
+  GET_CATEGORIES: PropTypes.func.isRequired,
+  devices: PropTypes.array.isRequired
 }
 
-export default connect(null, {
-  GET_CATEGORIES
+const mapStateToProps = state => ({
+  devices: state.device.devices
+})
+
+export default connect(mapStateToProps, {
+  GET_CATEGORIES,
+  CLEAR_DEVICES,
+  CLEAR_CATEGORIES
 })(AddPage)

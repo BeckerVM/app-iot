@@ -1,7 +1,10 @@
 import React, { useState } from 'react'
+import { connect } from 'react-redux'
 import classNames from 'classnames'
 
-const NavigationAdd = function () {
+import { GET_DEVICES_BY_SUBCATEGORY } from '../../actions/device'
+
+const NavigationAdd = function ({ GET_DEVICES_BY_SUBCATEGORY }) {
   const [clickedBtnSensor, SET_CLICKED_BTN_SENSOR] = useState(false)
   const [clickedBtnActuator, SET_CLICKED_BTN_ACTUATOR] = useState(false)
   const [clickedBtnExtention, SET_CLICKED_BTN_EXTENTION] = useState(false)
@@ -27,9 +30,9 @@ const NavigationAdd = function () {
               clickedBtnSensor ?
                 (
                   <div className="navigation-add__submenu">
-                    <span>Temperatura</span>
-                    <span>Luminosidad</span>
-                    <span>Proximidad</span>
+                    <span onClick={() => GET_DEVICES_BY_SUBCATEGORY(1)}>Temperatura</span>
+                    <span onClick={() => GET_DEVICES_BY_SUBCATEGORY(2)}>Luminosidad</span>
+                    <span onClick={() => GET_DEVICES_BY_SUBCATEGORY(3)}>Proximidad</span>
                   </div>
                 ) : null
             }
@@ -45,8 +48,8 @@ const NavigationAdd = function () {
               clickedBtnActuator ?
                 (
                   <div className="navigation-add__submenu">
-                    <span>Led</span>
-                    <span>Motor</span>
+                    <span onClick={() => GET_DEVICES_BY_SUBCATEGORY(4)}>Led</span>
+                    <span onClick={() => GET_DEVICES_BY_SUBCATEGORY(5)}>Motor</span>
                     <span>Relay</span>
                   </div>
                 ) : null
@@ -79,4 +82,6 @@ const NavigationAdd = function () {
   )
 }
 
-export default NavigationAdd
+export default connect(null, {
+  GET_DEVICES_BY_SUBCATEGORY
+})(NavigationAdd)

@@ -1,20 +1,28 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
 //COMPONENTES
 import ArduinoDevices from './ArduinoDevices'
 import ArduinoFormDevice from './ArduinoFormDevice'
 
-const ArduinoCategoryDevices = function() {
+//COMPONENTE
+const ArduinoCategoryDevices = function({ newDevice }) {
   return (
     <div className="arduino-category-devices">
       <div className="arduino-category-devices__left">
         <ArduinoDevices />
       </div>
       <div className="arduino-category-devices__right">
-        <ArduinoFormDevice />
+        {
+          newDevice !== null && <ArduinoFormDevice />
+        }
       </div>
     </div>
   )
 }
 
-export default ArduinoCategoryDevices
+const mapStateToProps = state => ({
+  newDevice: state.device.newDevice
+})
+
+export default connect(mapStateToProps)(ArduinoCategoryDevices)

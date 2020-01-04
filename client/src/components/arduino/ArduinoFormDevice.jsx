@@ -1,14 +1,16 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
-const ArduinoFormDevice =function() {
+//COMPONENTE
+const ArduinoFormDevice = function({ newDevice }) {
   return (
     <div className="arduino-form-device">
       <h5 className="arduino-form-device__title">Ingresar configuracion</h5>
       <div className="arduino-form-device__device">
-        <img width="116" height="116" src="https://s3.amazonaws.com/mydevices-images/raspberryPi/sensors/200x200/Servo-Motor.png" alt="Dispositivo"/>
+        <img width="116" height="116" src={newDevice.imageUrl} alt={newDevice.name}/>
         <div>
-          <strong>Servo Motor</strong>
-          <span>Controla un Servo Motor</span>
+          <strong>{ newDevice.name }</strong>
+          <span>{ newDevice.description }</span>
         </div>
       </div>
       <div className="arduino-form-device__alert">
@@ -34,5 +36,9 @@ const ArduinoFormDevice =function() {
   )
 }
 
-export default ArduinoFormDevice
+const mapStateToProps = state => ({
+  newDevice: state.device.newDevice
+})
+
+export default connect(mapStateToProps)(ArduinoFormDevice)
 

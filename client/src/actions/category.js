@@ -15,3 +15,10 @@ export const GET_CATEGORIES = () => async dispatch => {
     console.log(error)
   }
 }
+
+export const CLEAR_CATEGORIES = () => async dispatch => {
+  dispatch({
+    type: SET_CATEGORIES,
+    payload: []
+  })
+}
