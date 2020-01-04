@@ -11,7 +11,7 @@ const ArduinoDevices = function() {
             <p>On / Off Motor</p>
           </div>
         </div>
-        <i class="fas fa-angle-right"></i>
+        <i className="fas fa-angle-right"></i>
       </div>
       <div className="arduino-devices__device">
         <div className="arduino-devices__device-left">
@@ -21,7 +21,7 @@ const ArduinoDevices = function() {
             <p>Controlar un Servo Motor</p>
           </div>
         </div>
-        <i class="fas fa-angle-right"></i>
+        <i className="fas fa-angle-right"></i>
       </div>
     </div>
   )

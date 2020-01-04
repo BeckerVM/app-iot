@@ -6,9 +6,11 @@
   &__left {
     background-color: #30363c;
     width: 27rem;
+    height: 100vh;
   }
 
   &__rigth {
     flex: 1;
+    height: 100vh;
   }
 }

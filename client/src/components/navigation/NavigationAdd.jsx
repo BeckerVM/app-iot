@@ -2,9 +2,9 @@ import React, { useState } from 'react'
 import classNames from 'classnames'
 
 const NavigationAdd = function () {
-  const [clickedBtnSensor, setClickedBtnSensor] = useState(false)
-  const [clickedBtnActuator, setClickedBtnActuator] = useState(false)
-  const [clickedBtnExtention, setClickedBtnExtention] = useState(false)
+  const [clickedBtnSensor, SET_CLICKED_BTN_SENSOR] = useState(false)
+  const [clickedBtnActuator, SET_CLICKED_BTN_ACTUATOR] = useState(false)
+  const [clickedBtnExtention, SET_CLICKED_BTN_EXTENTION] = useState(false)
 
   return (
     <div className="navigation-add">
@@ -12,14 +12,14 @@ const NavigationAdd = function () {
       <div className="navigation-add__container-form">
         <form className="navigation-add__form">
           <input type="text" placeholder="Buscar..." />
-          <i class="fas fa-search"></i>
+          <i className="fas fa-search"></i>
         </form>
       </div>
       <div className="navigation-add__content">
         <strong>DISPOSITIVOS</strong>
         <div className="navigation-add__menu">
           <div className="navigation-add__item">
-            <button onClick={() => setClickedBtnSensor(!clickedBtnSensor)} className="navigation-add__btn">
+            <button onClick={() => SET_CLICKED_BTN_SENSOR(!clickedBtnSensor)} className="navigation-add__btn">
               <span>Sensores</span>
               <i className={classNames('fas', { 'fa-chevron-down': !clickedBtnSensor, 'fa-chevron-up': clickedBtnSensor })}></i>
             </button>
@@ -37,7 +37,7 @@ const NavigationAdd = function () {
         </div>
         <div className="navigation-add__menu mb-sm">
           <div className="navigation-add__item">
-            <button onClick={() => setClickedBtnActuator(!clickedBtnActuator)} className="navigation-add__btn">
+            <button onClick={() => SET_CLICKED_BTN_ACTUATOR(!clickedBtnActuator)} className="navigation-add__btn">
               <span>Actuadores</span>
               <i className={classNames('fas', { 'fa-chevron-down': !clickedBtnActuator, 'fa-chevron-up': clickedBtnActuator })}></i>
             </button>
@@ -54,7 +54,7 @@ const NavigationAdd = function () {
           </div>
           <div className="navigation-add__menu mb-sm">
             <div className="navigation-add__item">
-              <button onClick={() => setClickedBtnExtention(!clickedBtnExtention)} className="navigation-add__btn">
+              <button onClick={() => SET_CLICKED_BTN_EXTENTION(!clickedBtnExtention)} className="navigation-add__btn">
                 <span>Extensiones</span>
                 <i className={classNames('fas', { 'fa-chevron-down': !clickedBtnExtention, 'fa-chevron-up': clickedBtnExtention })}></i>
               </button>

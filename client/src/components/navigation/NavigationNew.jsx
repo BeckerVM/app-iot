@@ -2,13 +2,14 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import classNames from 'classnames'
 
+//COMPONENTE
 const NavigationNew = function () {
-  const [clickedBtnNew, setClickedBtnNew] = useState(false)
+  const [clickedBtnNew, SET_CLICKED_BTN_NEW] = useState(false)
 
   return (
     <>
       <button
-        onClick={() => setClickedBtnNew(!clickedBtnNew)}
+        onClick={() => SET_CLICKED_BTN_NEW(!clickedBtnNew)}
         className={classNames('dashboard__btn-new', { 'active': clickedBtnNew })}>
         <span>Añadir nuevo...</span> <i className="fas fa-chevron-down"></i>
       </button>
@@ -17,8 +18,8 @@ const NavigationNew = function () {
           (
             <div className="dashboard__options">
               <Link to="/bybiot/dashboard/add" className="dashboard__options-link">Dispositivo y Componentes</Link>
-              <a className="dashboard__options-link" href="#">Evento</a>
-              <a className="dashboard__options-link" href="#">Proyecto</a>
+              <Link to="/bybiot/dashboard" className="dashboard__options-link">Evento</Link>
+              <Link to="/bybiot/dashboard" className="dashboard__options-link">Proyecto</Link>
             </div>
           ) :
           null

@@ -17,7 +17,7 @@ function App() {
         </Switch>      
       </Router>
     </Provider>
-  );
+  )
 }
 
-export default App;
+export default App

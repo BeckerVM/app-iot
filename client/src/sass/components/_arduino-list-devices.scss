@@ -1,5 +1,9 @@
 .arduino-list-devices {
-  padding:  1.5rem 5rem;
+  padding: 0 5rem;
+
+  &__content {
+    padding-top: 1.5rem;
+  }
 
   &__list {
     color: #fff;

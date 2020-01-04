@@ -1,28 +1,16 @@
 const express = require('express')
+const morgan = require('morgan')
+const cors = require('cors')
+
 const app = express()
 
-const Category = require('./models').Category
-const Device = require('./models').Device
+//MIDDLEWARES
+app.use(morgan('dev'))
+app.use(cors())
+app.use(express.json())
 
-app.get('/', async (req, res) => {
-  try {
-    const categories = await Category.findAll()
-    const data = []
-    
-   for(let i = 0; i < categories.length; i++) {
-     data.push({
-       category: categories[i],
-       subcategories: await categories[i].getSubcategories()
-     })
-   }
-
-    res.json(data)
-
-  } catch (error) {
-    res.status(500).json(error)
-  }
-})
-
+//RUTAS
+app.use('/api/device', require('./routes/device'))
 
 const PORT = 5000
 
