@@ -19,6 +19,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 0 2rem;
+    position: relative;
 
     i {
       font-size: 1.4rem;
@@ -35,6 +36,7 @@
     width: 23rem;
     background-color: #30363c;
     padding: 1rem;
+    position: relative;
   }
 
   &__aside-header {
@@ -117,6 +119,37 @@
 
   &__options-link:hover {
     background-color: rgb(236, 35, 76);
+  }
+
+  &__alert {
+    background-color: crimson;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #fff;
+    padding: .5rem 2rem;
+    border-radius: 0 0 .5rem .5rem;
+    font-size: 1.3rem;
+    width: 20rem;
+    text-align: center;
+  }
+
+  &__connect {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 1.3rem;
+    padding-bottom: 10rem;
+
+    i {
+      color: crimson;
+      font-size: 6rem;
+      margin-bottom: 1rem;
+    }
   }
 
 }

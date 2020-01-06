@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import PropTypes from 'prop-types';
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
 //COMPONENTES
@@ -17,7 +17,6 @@ const AddPage = function({ GET_CATEGORIES, devices, CLEAR_DEVICES, CLEAR_CATEGOR
     GET_CATEGORIES()
     
     return () => {
-      console.log('SALIENDO DE ADD PAGE')
       CLEAR_DEVICES()
       CLEAR_CATEGORIES()
     }

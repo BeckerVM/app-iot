@@ -1,0 +1,41 @@
+.index {
+  height: 100vh;
+  background: radial-gradient(farthest-corner at 95% 10%, #94525A, #181528);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+
+  &__content {
+    font-size: 2rem;
+    text-align: center;
+    color: #fff;
+
+    h1 {
+      font-size: 3rem;
+      font-weight: 300;
+      font-style: italic;
+      margin-bottom: 5rem;
+
+      i {
+        font-size: 5rem;
+      }
+    }
+
+    button {
+      border: .1rem solid #fff;
+      border-radius: .5rem;
+      background-color: transparent;
+      padding: 1.5rem 4rem;
+      color: #Fff;
+      cursor: pointer;
+      transition: all .3s;
+      margin-bottom: 10rem;
+    }
+
+    button:hover {
+      background-color: #fff;
+      background-color: rgba(226, 182, 191, 0.541);
+    }
+  }
+}

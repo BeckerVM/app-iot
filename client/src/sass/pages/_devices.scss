@@ -1,0 +1,68 @@
+.devices {
+  background-color: #353c42;
+
+  &__header {
+    background-color: crimson;
+    display: flex;
+    color: #fff;
+    font-size: 1.3rem;
+  }
+
+  &__header-left {
+    background-color: rgb(151, 18, 45);
+    padding: 1.5rem;
+    align-items: center;
+    width: 15rem;
+    text-align: center;
+  }
+
+  &__header-right {
+    padding: 1.5rem;
+    text-align: end;
+    flex: 1;
+  }
+
+  &__content {
+    padding-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &__device {
+    background-color: #272c30;
+    width: 12rem;
+    height: 12rem;
+    color: #fff;
+    font-size: 1.3rem;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    margin-right: .5rem;
+  }
+
+  &__device-header {
+    display: flex;
+    justify-content: space-between;
+
+    i {
+      cursor: pointer;
+    }
+  }
+
+  &__device-content {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__device-component {
+    width: 7rem;
+    height: 7rem;
+    border-radius: 50%;
+    border: .2rem solid #353c42;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

@@ -2,8 +2,10 @@
 @import './abstracts/utilities';
 
 //PAGINAS
+@import './pages/index';
 @import './pages/dashboard';
 @import './pages/add';
+@import './pages/devices';
 
 //COMPONENTES
 @import './components/arduino-container-widgets';
