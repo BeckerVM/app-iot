@@ -1,16 +1,20 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 
 //COMPONENTES
-
+import Led from '../components/arduino-components/Led'
 //ACCIONES
-import {  } from '../actions/category'
-import {  } from '../actions/device'
 
 //COMPONENTE
-const DevicesPage = function({ }) {
+const DevicesPage = function({ socket }) {
+  const [devices, SET_DEVICES] = useState([])
 
-
+  useEffect(() => {
+    socket.on('get-devices', (devices) => {
+      SET_DEVICES(devices)
+    })
+  }, [])
+  
   return (
     <div className="devices">
       <div className="devices__header">
@@ -22,39 +26,11 @@ const DevicesPage = function({ }) {
         </div>
       </div>
       <div className="devices__content">
-        <div className="devices__device">
-          <div className="devices__device-header">
-            <span>LED ROJO</span>
-            <i className="far fa-times-circle"></i>
-          </div>
-          <div className="devices__device-content">
-            <div className="devices__device-component">
-              <i className="fas fa-lightbulb"></i>
-            </div>
-          </div>
-        </div>
-        <div className="devices__device">
-          <div className="devices__device-header">
-            <span>LED ROJO</span>
-            <i className="far fa-times-circle"></i>
-          </div>
-          <div className="devices__device-content">
-            <div className="devices__device-component">
-              <i className="fas fa-lightbulb"></i>
-            </div>
-          </div>
-        </div>
-        <div className="devices__device">
-          <div className="devices__device-header">
-            <span>LED ROJO</span>
-            <i className="far fa-times-circle"></i>
-          </div>
-          <div className="devices__device-content">
-            <div className="devices__device-component">
-              <i className="fas fa-lightbulb"></i>
-            </div>
-          </div>
-        </div>
+        {
+          devices.map((device) =>
+            <Led key={device.id} device={device} />
+          )
+        }
       </div>
     </div>
   )
@@ -62,7 +38,7 @@ const DevicesPage = function({ }) {
 
 
 const mapStateToProps = state => ({
-  devices: state.device.devices
+  socket: state.socket.socket
 })
 
 export default connect(mapStateToProps, {

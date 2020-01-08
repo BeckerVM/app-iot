@@ -1,6 +1,7 @@
 const express = require('express')
 const morgan = require('morgan')
 const cors = require('cors')
+const uuid = require('uuid/v1')
 const { Board, Led } = require('johnny-five')
 
 const app = express()
@@ -28,11 +29,45 @@ let devices = []
 io.on('connection', (socket) => {
   console.log('Connected platform')
 
+  socket.on('disconnect', function() {
+    console.log('Disconnected platform')
+  })
+
+  socket.on('add-device', (device) => {
+    device.id = uuid()
+    device.value = 0
+    devices.push(device)
+    socket.emit('get-devices', devices)
+  })
+
+  //CONEXION ARDUINO
   myBoard = new Board()
 
   myBoard.on('ready', function() {
     console.log('ready')
+    
     socket.emit('arduino-connected', true)
+
+    //LED
+    socket.on('led', myLed => {
+      devices = devices.map(device => {
+        if(device.id !== myLed.id) {
+          return device
+        } else {
+          return myLed
+        }
+      })
+
+      const led = new Led(myLed.pin)
+
+      if(myLed.value) {
+        led.on()
+      } else {
+        led.off()
+      }
+
+      socket.emit('get-devices', devices)
+    })
   })
 
   myBoard.on('close', function() {
@@ -40,7 +75,4 @@ io.on('connection', (socket) => {
     socket.emit('arduino-connected', false)
   })
 
-  socket.on('disconnect', function() {
-    console.log('Disconnected platform')
-  })
 })

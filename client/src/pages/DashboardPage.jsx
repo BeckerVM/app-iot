@@ -66,7 +66,7 @@ const DashboardPage = function ({ history ,socket, connectedArduino, IS_CONNECTE
               <Switch>
                 <Route path="/bybiot/dashboard/test" component={TestPage} />
                 <Route path="/bybiot/dashboard/add" component={AddPage} />
-                <Route path="/bybiot/dashboard" component={DevicesPage} />
+                <Route path="/bybiot/dashboard/devices" component={DevicesPage} />
               </Switch>
             </div>
           </main>

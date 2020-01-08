@@ -1,8 +1,28 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 //COMPONENTE
-const ArduinoFormDevice = function({ newDevice, connectedArduino }) {
+const ArduinoFormDevice = function({ newDevice, connectedArduino, socket, history }) {
+  const [device, SET_DEVICE] = useState({
+    name: newDevice.name,
+    type: newDevice.name,
+    pin: ''
+  })
+
+  const CHANGE_INPUT_VALUE = (e) => {
+    SET_DEVICE({
+      ...device,
+      [e.target.name]: e.target.value
+    })
+  }
+
+  const SUBMIT_DATA_DEVICE = (e) => {
+    e.preventDefault()
+    socket.emit('add-device', device)
+    history.push('/bybiot/dashboard/devices')
+  }
+
   return (
     <div className="arduino-form-device">
       <h5 className="arduino-form-device__title">Ingresar configuracion</h5>
@@ -21,14 +41,18 @@ const ArduinoFormDevice = function({ newDevice, connectedArduino }) {
           <span>->  Por favor conecte el arduino</span>
         </div>
       }
-      <form>
+      <form onSubmit={SUBMIT_DATA_DEVICE}>
         <div className="arduino-form-device__container-input">
           <span>Nombre dispositivo</span>
-          <input type="text"/>
+          <input value={device.name} onChange={CHANGE_INPUT_VALUE} name="name" type="text"/>
         </div>
         <div className="arduino-form-device__container-input">
           <span>Pin</span>
-          <input type="text"/>
+          <input value={device.pin} onChange={CHANGE_INPUT_VALUE} name="pin" type="text"/>
+        </div>
+        <div className="arduino-form-device__container-input">
+          <span>Componente o Dispositivo</span>
+          <input type="text" value={newDevice.name} />
         </div>
 
         <button disabled={!connectedArduino} type="submit">
@@ -41,8 +65,9 @@ const ArduinoFormDevice = function({ newDevice, connectedArduino }) {
 
 const mapStateToProps = state => ({
   newDevice: state.device.newDevice,
-  connectedArduino: state.socket.connectedArduino
+  connectedArduino: state.socket.connectedArduino,
+  socket: state.socket.socket
 })
 
-export default connect(mapStateToProps)(ArduinoFormDevice)
+export default withRouter(connect(mapStateToProps)(ArduinoFormDevice))
 
