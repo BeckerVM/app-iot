@@ -1,14 +1,22 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 //COMPONENTE
 const ArduinoFormDevice = function({ newDevice, connectedArduino, socket, history }) {
   const [device, SET_DEVICE] = useState({
-    name: newDevice.name,
-    type: newDevice.name,
+    name: '',
+    type: '',
     pin: ''
   })
+  
+  useEffect(() => {
+    SET_DEVICE({
+      ...device,
+      name: newDevice.name,
+      type: newDevice.name
+    })
+  }, [newDevice])
 
   const CHANGE_INPUT_VALUE = (e) => {
     SET_DEVICE({

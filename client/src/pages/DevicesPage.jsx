@@ -1,17 +1,17 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 
 //COMPONENTES
 import Led from '../components/arduino-components/Led'
+import Servo from '../components/arduino-components/Servo'
 //ACCIONES
+import { GET_MY_DEVICES } from '../actions/socket'
 
 //COMPONENTE
-const DevicesPage = function({ socket }) {
-  const [devices, SET_DEVICES] = useState([])
-
+const DevicesPage = function({ socket, myDevices, GET_MY_DEVICES }) {
   useEffect(() => {
     socket.on('get-devices', (devices) => {
-      SET_DEVICES(devices)
+      GET_MY_DEVICES(devices)
     })
   }, [])
   
@@ -22,14 +22,19 @@ const DevicesPage = function({ socket }) {
           <span><i className="fas fa-network-wired"></i> Vision General</span>
         </div>
         <div className="devices__header-right">
-          <span>Arduino <i class="fas fa-laptop-code"></i></span>
+          <span>Arduino <i className="fas fa-laptop-code"></i></span>
         </div>
       </div>
       <div className="devices__content">
         {
-          devices.map((device) =>
-            <Led key={device.id} device={device} />
-          )
+          myDevices.map((device) =>{
+            switch(device.type) {
+              case 'Led':
+                return <Led key={device.id} device={device} />
+              case 'Micro Servo sg90':
+                return <Servo key={device.id} device={device} />
+            }
+          })
         }
       </div>
     </div>
@@ -38,8 +43,10 @@ const DevicesPage = function({ socket }) {
 
 
 const mapStateToProps = state => ({
-  socket: state.socket.socket
+  socket: state.socket.socket,
+  myDevices: state.socket.myDevices
 })
 
 export default connect(mapStateToProps, {
+  GET_MY_DEVICES
 })(DevicesPage)

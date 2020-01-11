@@ -1,4 +1,4 @@
-import { SET_CONNECTED_ARDUINO, SET_SOCKET } from '../definitions/socket'
+import { SET_CONNECTED_ARDUINO, SET_SOCKET, SET_MY_DEVICES } from '../definitions/socket'
 
 
 
@@ -23,3 +23,14 @@ export const IS_CONNECTED = (connected) => dispatch => {
     console.log(error)
   }
 }
+
+export const GET_MY_DEVICES = (myDevices) => dispatch => {
+  try {
+    dispatch({
+      type: SET_MY_DEVICES,
+      payload: myDevices
+    })
+  } catch (error) {
+    
+  }
+} 

@@ -1,9 +1,10 @@
 import mySocket from '../socket'
-import { SET_CONNECTED_ARDUINO, SET_SOCKET } from '../definitions/socket'
+import { SET_CONNECTED_ARDUINO, SET_SOCKET, SET_MY_DEVICES } from '../definitions/socket'
 
 const initialState = {
   socket: localStorage.getItem('socket'),
-  connectedArduino: false 
+  connectedArduino: false,
+  myDevices: []
 }
 
 export default (state = initialState, action) => {
@@ -18,6 +19,11 @@ export default (state = initialState, action) => {
       return {
         ...state,
         connectedArduino: action.payload
+      }
+    case SET_MY_DEVICES:
+      return {
+        ...state,
+        myDevices: [...action.payload]
       }
     default:
       return state

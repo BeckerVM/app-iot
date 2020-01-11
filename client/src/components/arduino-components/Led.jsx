@@ -4,9 +4,7 @@ import classNames from 'classnames'
 
 const Led = function ({ device, socket }) {
   const CLICK__LED = () => {
-    let updateDevice = { ...device, value: !device.value }
-    console.log(updateDevice)
-    socket.emit('led', updateDevice)
+    socket.emit('led', device)
   }
 
   return (
