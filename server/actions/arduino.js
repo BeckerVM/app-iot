@@ -1,7 +1,8 @@
 const uuid = require('uuid/v1')
-const { Led, Servo } = require('johnny-five')
+const { Led, Servo, Thermometer } = require('johnny-five')
 
 let devices = []
+let temperatures = []
 
 exports.addDevices = (socket, device) => {
   console.log('ADD_DEVICE')
@@ -9,6 +10,11 @@ exports.addDevices = (socket, device) => {
 
   device.id = uuid()
   device.value = 0
+
+  if(device.type === 'LM35') {
+    device.value = []
+  }
+  
   devices.push(device)
   console.log(devices)
   socket.emit('get-devices', devices)
@@ -58,4 +64,20 @@ exports.runServo = (socket, data) => {//data = { myServo, value }
   servo.to(value)
   
   socket.emit('get-devices', devices)
+}
+
+exports.runLm= (socket, myLm) => {
+  console.log('RUN_LM')
+
+  const thermometer = new Thermometer({
+    controller: "LM35",
+    pin: myLm.pin,
+    freq: 3000
+  })
+
+  thermometer.on('data', function() {
+    temperatures.push(this.C)
+    console.log(this.C)
+    socket.emit('send-data-lm', { data: temperatures, c: this.C })
+  })
 }

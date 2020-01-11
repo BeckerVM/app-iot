@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 //COMPONENTES
 import Led from '../components/arduino-components/Led'
 import Servo from '../components/arduino-components/Servo'
+import LM from '../components/arduino-components/Lm'
 //ACCIONES
 import { GET_MY_DEVICES } from '../actions/socket'
 
@@ -33,9 +34,12 @@ const DevicesPage = function({ socket, myDevices, GET_MY_DEVICES }) {
                 return <Led key={device.id} device={device} />
               case 'Micro Servo sg90':
                 return <Servo key={device.id} device={device} />
+              case 'LM35':
+                return <LM Key={device.id} device={device} />
             }
           })
         }
+
       </div>
     </div>
   )
