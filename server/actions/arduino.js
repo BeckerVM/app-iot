@@ -1,5 +1,5 @@
 const uuid = require('uuid/v1')
-const { Led, Servo, Thermometer } = require('johnny-five')
+const { Led, Servo, Thermometer, Proximity } = require('johnny-five')
 
 let devices = []
 let temperatures = []
@@ -11,9 +11,10 @@ exports.addDevices = (socket, device) => {
   device.id = uuid()
   device.value = 0
 
-  if(device.type === 'LM35') {
+  if(device.type === 'LM35' || device.type === 'Sensor HC-SR04') {
     device.value = []
   }
+
   
   devices.push(device)
   console.log(devices)
@@ -66,7 +67,7 @@ exports.runServo = (socket, data) => {//data = { myServo, value }
   socket.emit('get-devices', devices)
 }
 
-exports.runLm= (socket, myLm) => {
+exports.runLm = (socket, myLm) => {
   console.log('RUN_LM')
 
   const thermometer = new Thermometer({
@@ -79,5 +80,23 @@ exports.runLm= (socket, myLm) => {
     temperatures.push(this.C)
     console.log(this.C)
     socket.emit('send-data-lm', { data: temperatures, c: this.C })
+  })
+}
+
+exports.runProximity = (socket, myProximity) => {
+  console.log('RUN_PROXIMITY')
+
+  const proximity = new Proximity({
+    controller: "HCSR04",
+    pin: myProximity.pin,
+    freq: 2000
+  })
+
+  proximity.on('change', () => {
+    const { centimeters } = proximity
+
+    console.log("cm: ", centimeters)
+
+    socket.emit('send-data-proximity', [centimeters])
   })
 }

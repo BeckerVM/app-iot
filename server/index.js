@@ -25,7 +25,7 @@ const io = require('./socket').init(server)
 let myBoard = null
 
 //ACCIONES
-const { addDevices, runLed, runServo, runLm } = require('./actions/arduino')
+const { addDevices, runLed, runServo, runLm, runProximity } = require('./actions/arduino')
 
 io.on('connection', (socket) => {
   console.log('Connected platform')
@@ -50,8 +50,10 @@ io.on('connection', (socket) => {
     socket.on('led', myLed => runLed(socket, myLed))
     //SERVO
     socket.on('servo', data => runServo(socket, data))
-
+    //TEMPERATURE
     socket.on('lm', myLm => runLm(socket, myLm))
+    //PROXIMITY
+    socket.on('proximity', myProximity => runProximity(socket, myProximity))
   })
 
   //CUANDO EL ARDUINO ES DESCONECTADO

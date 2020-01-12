@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import Led from '../components/arduino-components/Led'
 import Servo from '../components/arduino-components/Servo'
 import LM from '../components/arduino-components/Lm'
+import Proximity from '../components/arduino-components/Proximity'
 //ACCIONES
 import { GET_MY_DEVICES } from '../actions/socket'
 
@@ -36,10 +37,11 @@ const DevicesPage = function({ socket, myDevices, GET_MY_DEVICES }) {
                 return <Servo key={device.id} device={device} />
               case 'LM35':
                 return <LM Key={device.id} device={device} />
+              case 'Sensor HC-SR04':
+                return <Proximity Key={device.id} device={device} />
             }
           })
         }
-
       </div>
     </div>
   )

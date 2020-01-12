@@ -34,7 +34,7 @@ class ChartTemperature extends React.Component {
         },
         chart: {
           foreColor: '#fff'
-      }
+        }
       }
 
     }
