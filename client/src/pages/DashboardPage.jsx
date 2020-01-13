@@ -52,7 +52,7 @@ const DashboardPage = function ({ history ,socket, connectedArduino, IS_CONNECTE
         <header className="dashboard__header">
           {!connectedArduino && <div className="dashboard__alert dashboard__alert-danger">ARDUINO OFFLINE</div>}
           {connectedArduino && <div className="dashboard__alert dashboard__alert-success">ARDUINO ONLINE</div>}
-          <Link to="/bybiot/dashboard/devices" className="dashboard__title">BYB<span>IOT</span></Link>
+          <Link to="/bybiot/dashboard" className="dashboard__title">BYB<span>IOT</span></Link>
           <i className="fas fa-power-off text-white"></i>
         </header>
         <div className="dashboard__content">
@@ -64,7 +64,7 @@ const DashboardPage = function ({ history ,socket, connectedArduino, IS_CONNECTE
           <main className="dashboard__main">
             <div className="dashboard__main-content">
               <Switch>
-                <Route path="/bybiot/dashboard/test" component={TestPage} />
+                <Route exact path="/bybiot/dashboard" component={TestPage} />
                 <Route path="/bybiot/dashboard/add" component={AddPage} />
                 <Route path="/bybiot/dashboard/devices" component={DevicesPage} />
               </Switch>

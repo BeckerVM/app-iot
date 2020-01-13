@@ -28,7 +28,9 @@ const LM = function ({ device, socket }) {
     <div className="devices__device">
       <div className="devices__device-header">
         <span>TEMP 1</span>
-        <i  className="far fa-times-circle"></i>
+        <i onClick={() => {
+          socket.emit('delete-device', device)
+        }} className="far fa-times-circle"></i>
       </div>
       <div className="devices__device-content">
         <div onClick={() => SET_OPENED_MODAL(!openedModal)} className={classNames('devices__device-component')}>

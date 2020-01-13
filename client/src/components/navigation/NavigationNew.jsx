@@ -18,7 +18,7 @@ const NavigationNew = function () {
           (
             <div className="dashboard__options">
               <Link to="/bybiot/dashboard/add" className="dashboard__options-link">Dispositivo y Componentes</Link>
-              <Link to="/bybiot/dashboard" className="dashboard__options-link">Evento</Link>
+              <Link to="/bybiot/dashboard/devices" className="dashboard__options-link">Mis dispositivos</Link>
               <Link to="/bybiot/dashboard" className="dashboard__options-link">Proyecto</Link>
             </div>
           ) :

@@ -25,7 +25,7 @@ const io = require('./socket').init(server)
 let myBoard = null
 
 //ACCIONES
-const { addDevices, runLed, runServo, runLm, runProximity } = require('./actions/arduino')
+const { addDevices, deleteDevice, runLed, runServo, runLm, runProximity } = require('./actions/arduino')
 
 io.on('connection', (socket) => {
   console.log('Connected platform')
@@ -36,6 +36,7 @@ io.on('connection', (socket) => {
 
   //AÑADIR MAS COMPONENTES A NUESTRO ARDUINO
   socket.on('add-device', (device) => addDevices(socket, device))
+  socket.on('delete-device', (device) => deleteDevice(socket, device))
 
   //CONEXION ARDUINO
   myBoard = new Board()

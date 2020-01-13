@@ -13,16 +13,18 @@ const Servo = function ({ device, socket }) {
   return (
     <div className="devices__device">
       <div className="devices__device-header">
-        <span>{ device.name }</span>
-        <i className="far fa-times-circle"></i>
+        <span>{device.name}</span>
+        <i onClick={() => {
+          socket.emit('delete-device', device)
+        }} className="far fa-times-circle"></i>
       </div>
       <div className="devices__device-content">
-        <InputRange 
+        <InputRange
           minValue={0}
           maxValue={180}
           value={device.value}
           onChange={value => CHANGE_RANK_SERVO(value)}
-        />  
+        />
       </div>
     </div>
   )

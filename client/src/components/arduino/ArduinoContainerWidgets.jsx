@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
+import { connect } from 'react-redux'
 import classNames from 'classnames'
 
-const ArduinoContainerWidgets = function () {
+const ArduinoContainerWidgets = function ({ myDevices }) {
   const [clickedBtnWidgets, setClickedBtnWidgets] = useState(true)
 
   return (
@@ -14,18 +15,20 @@ const ArduinoContainerWidgets = function () {
         clickedBtnWidgets ?
           (
             <div className="arduino-container-widgets__list">
-              <span className="arduino-container-widgets__list-item">
-                <i className="fas fa-lightbulb text-green-1"></i> Verde
-              </span>
-              <span className="arduino-container-widgets__list-item">
-                <i className="fas fa-lightbulb text-yellow-1"></i> Amarillo
-              </span>
-              <span className="arduino-container-widgets__list-item">
-                <i className="fas fa-lightbulb text-blue-1"></i> Azul
-              </span>
-              <span className="arduino-container-widgets__list-item">
-                <i className="fas fa-lightbulb text-red-1"></i> Rojo
-              </span>
+              {
+                myDevices.map(device => 
+                  <span className="arduino-container-widgets__list-item" key={device.id}>
+                    <i className="fas fa-plug"></i> { device.name }
+                  </span>
+                )
+              }
+              {
+                myDevices.length === 0 
+                && 
+                <span className="arduino-container-widgets__list-item">
+                  No hay componentes agregados
+                </span>
+              }
             </div>
           ) :
           null
@@ -34,4 +37,8 @@ const ArduinoContainerWidgets = function () {
   )
 }
 
-export default ArduinoContainerWidgets
+const mapStateToProps = state => ({
+  myDevices: state.socket.myDevices
+})
+
+export default connect(mapStateToProps)(ArduinoContainerWidgets)

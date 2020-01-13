@@ -42,6 +42,9 @@ const DevicesPage = function({ socket, myDevices, GET_MY_DEVICES }) {
             }
           })
         }
+        {
+          myDevices.length === 0 && <span className="text-white mx-auto">No hay componentes agregados</span>
+        }
       </div>
     </div>
   )

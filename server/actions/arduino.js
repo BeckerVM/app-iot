@@ -21,6 +21,15 @@ exports.addDevices = (socket, device) => {
   socket.emit('get-devices', devices)
 }
 
+exports.deleteDevice = (socket, device) => {
+  console.log('DELETE_DEVICE')
+  
+  const updatedDevices = devices.filter(d => d.id !== device.id)
+  devices = updatedDevices
+
+  socket.emit('get-devices', devices)
+}
+
 exports.runLed =(socket, myLed) => {
   console.log('RUN_LED')
   console.log(devices)
